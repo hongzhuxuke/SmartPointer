@@ -28,6 +28,10 @@ void myDelete(MyClass* myC)
 
 int main()
 {
+	int &&a1 = 1;
+	int &rb = a1;
+	//int &&dd = &rb; //error C2440 : “初始化”: 无法从“int *”转换为“int &&”
+	//int &&dd = &&rb;  //error C2059: 语法错误:“&&”
 	//int *p = new int[5];
 	//for (int i = 0; i<5; i++)
 	//{
@@ -42,7 +46,11 @@ int main()
 	//MyClass * pMyClass = new MyClass[5];
 
 	//delete []pMyClass;
-	
+	int a = 0;
+	++a = 45;
+	int b;
+	//&b = &a;//error C2106: “=”: 左操作数必须为左值
+	//a++ = 88; error C2106: “=”: 左操作数必须为左值
 	std::shared_ptr<MyClass> Sptr = std::make_shared<MyClass>();
 
 	std::shared_ptr<MyClass> SptrArray = std::shared_ptr<MyClass>(new MyClass[5], myDelete);
